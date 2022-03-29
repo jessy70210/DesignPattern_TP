@@ -13,15 +13,14 @@ public class DiskCache implements ICache{
     private File dirCache;
 
 
-    private DiskCache (String naneMap) {
-        dirCache = new File("H:\\Home\\Documents\\IdeaProjects\\tp1v3-dp-squelette-maven\\carte", naneMap);
+    private DiskCache (String nameMap) {
+//        dirCache = new File("H:\\Home\\Documents\\IdeaProjects\\tp1v3-dp-squelette-maven\\carte", naneMap);
+        dirCache = new File(FileUtil.userHome()+"\\cartes", nameMap);
         dirCache.mkdir();
-        System.out.println(dirCache.getAbsolutePath());
     }
 
     public static DiskCache getInstance(String nameMap) {
-        if (!map.containsKey(nameMap))
-            map.put(nameMap, new DiskCache(nameMap));
+        if (!map.containsKey(nameMap)) map.put(nameMap, new DiskCache(nameMap));
         return map.get(nameMap);
     }
 
@@ -49,7 +48,6 @@ public class DiskCache implements ICache{
 
     @Override
     public void clear() {
-        System.out.println("clear " +dirCache.getAbsolutePath());
         FileUtil.deleteDirectory(dirCache);
     }
 
