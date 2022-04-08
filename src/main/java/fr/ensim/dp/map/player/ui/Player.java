@@ -5,7 +5,11 @@ import fr.ensim.dp.map.player.IStatePlayer;
 
 public class Player implements IPlayer {
 
-    IStatePlayer state = new StateStop();
+    public IStatePlayer state;
+
+    public Player(IStatePlayer state) {
+        this.state = state;
+    }
 
     @Override
     public void play() {

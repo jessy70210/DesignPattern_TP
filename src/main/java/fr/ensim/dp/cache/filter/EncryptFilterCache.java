@@ -47,41 +47,7 @@ public class EncryptFilterCache implements IFilterCache {
     }
 }
 
-class AESFileCryptoUtil {
-
-    /**
-     * Permet de chiffrer ou déchiffrer un fichier
-     *
-     * @param mode     chiffrer (1) ou déchiffrer (2)
-     * @param password Le mot de passe
-     * @param input    Le fichier à chiffrer ou à déchiffrer
-     * @param output   Le fichier chiffrer ou déchiffrer
-     * @throws NoSuchAlgorithmException
-     * @throws NoSuchPaddingException
-     * @throws InvalidKeyException
-     * @throws IOException
-     * @throws BadPaddingException
-     * @throws IllegalBlockSizeException
-     * @throws Exception
-     */
-    public static void cryptOrDecryptFileOLD(int mode, String password, File input, File output) throws NoSuchAlgorithmException,
-            NoSuchPaddingException, InvalidKeyException, IOException, IllegalBlockSizeException, BadPaddingException {
-
-        SecretKey secret = generateSecretKeyWithPassword(password);
-
-        /* Utilisation de l'algorithme AES */
-        Cipher aesCipher = Cipher.getInstance("AES");
-        aesCipher.init(mode, secret);
-
-        /* Lecture du contenu au format byte */
-        byte[] content = Files.readAllBytes(input.toPath());
-
-        /* Chiffre ou déchiffre le contenu du fichier */
-        byte[] resultContent = aesCipher.doFinal(content);
-
-        /* Création et écriture du contenu dans le fichier de sortie */
-        Files.write(output.toPath(), resultContent, StandardOpenOption.CREATE);
-    }
+final class AESFileCryptoUtil {
 
     /**
      * Permet de chiffrer ou déchiffrer un fichier
