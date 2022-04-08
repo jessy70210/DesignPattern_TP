@@ -18,7 +18,7 @@ public class GzipUtil {
   /**
    * Compression d'un buffer
    * 
-   * @param uncompressed
+   * @param uncompressedBytes
    *          le buffer 
    * @return le buffer compressé
    * @throws IOException
@@ -38,7 +38,7 @@ public class GzipUtil {
    * Uncompress a previously compressed string; this method is the inverse of
    * the compress method.
    * 
-   * @param byte array containing compressed data
+   * @param compressed array containing compressed data
    * @return uncompressed string
    * @throws IOException
    *           if the inflation fails
